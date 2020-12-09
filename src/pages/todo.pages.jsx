@@ -11,6 +11,10 @@ class Todo extends React.Component{
         handleSubmit=(event)=>{
             event.preventDefault();
             console.log("button clicked");
+            if(this.state.value===''){
+                return;
+            }
+            else{
             const userInput={
                 id:Math.random(),
                 value:this.state.value,
@@ -26,7 +30,8 @@ class Todo extends React.Component{
                 userInput:""
             });
             console.log("push Operation");
-        }
+            }
+    }
         updateText=(event)=>{
             this.setState({
                 value:event.target.value
@@ -67,12 +72,12 @@ class Todo extends React.Component{
                         <button type="submit" value="Submit">Submit</button>
                     </form>
                     <ul>
-                        <li>Hello</li>
-                        {this.state.list.map((item,index)=>{return <li>{item.value}
+                        {this.state.list.length===0?'No Information Currently In the List':this.state.list.map((item,index)=>{return <li>{item.value}
                         <button onClick={()=>this.deletedItem(item.id)}>Delete</button>
-            <button onClick={()=>this.toogleTask(item.id)}>{item.status?'Incomplete':'Complete'}</button>
+                        <button onClick={()=>this.toogleTask(item.id)}>{item.status?'Incomplete':'Complete'}</button>
                         </li>
-                    })} 
+                    })}
+                        
                     </ul>
                     </div>
                     
