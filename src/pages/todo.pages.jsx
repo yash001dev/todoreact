@@ -13,7 +13,9 @@ class Todo extends React.Component{
             console.log("button clicked");
             const userInput={
                 id:Math.random(),
-                value:this.state.value
+                value:this.state.value,
+                status:false,
+                
             };
             console.log("list added");
             const list=[...this.state.list];
@@ -32,6 +34,31 @@ class Todo extends React.Component{
         console.log(event.target.value);
        
         }
+
+        deletedItem(key){
+            const list=[...this.state.list];
+            const updatedList=list.filter(item=>item.id!==key);
+            this.setState({
+                list:updatedList
+            })
+        }
+
+        toogleTask(key){
+            const list=[...this.state.list];
+            const updatedList=list.map((item,index)=>{
+                if(item.id===key){
+                    return {...item,status:!item.status};
+                }
+                else{
+                    return {...item};
+                }
+            })
+            this.setState({
+                list:updatedList
+            })
+
+            console.log(updatedList);
+        }
         render(){
             return(
                     <div>
@@ -41,11 +68,15 @@ class Todo extends React.Component{
                     </form>
                     <ul>
                         <li>Hello</li>
-                        {this.state.list.forEach(item=>{return <li>HELLo</li>})}
+                        {this.state.list.map((item,index)=>{return <li>{item.value}
+                        <button onClick={()=>this.deletedItem(item.id)}>Delete</button>
+            <button onClick={()=>this.toogleTask(item.id)}>{item.status?'Incomplete':'Complete'}</button>
+                        </li>
+                    })} 
                     </ul>
                     </div>
                     
-                
+                    // {this.state.list.map((item,index)=>{return <li>{item.value}</li>})} 
                
                 
             )
