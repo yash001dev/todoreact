@@ -5,6 +5,21 @@
     box-sizing: inherit;
     
 }
+:root{
+    --primaryColor:#11998e;
+    --secondaryColor:#38ef7d;
+    --white:#fff;
+    --gray:#9b9b9b;
+}
+
+.todo{
+    position: relative;
+    padding: 15px 0 0;
+    margin-top: 10px;
+    width: 40vw;
+    display: flex;
+
+}
 html{
     box-sizing: border-box;
     font-size: 62.5%;
@@ -13,6 +28,8 @@ body{
     font-family: 'Montserrat', Courier, monospace;
     font-weight: 400;
     line-height: 1.6;
+    background-color: rgba(0, 0, 0, 0.589);
+    color: white;
     
 }
 /* End BaseStyling */
@@ -25,31 +42,43 @@ body{
     margin: auto;
     border: 1px solid black;
     flex-direction: column;
-    width: 100em;
+    width: 80vw;
     margin-top: 30px;
     border-radius: 5px;
     /* background-image: linear-gradient(to right, rgb(168, 255, 120), rgb(120, 255, 214)); */
-    background-color: #e5e5e5;
+    background-color:rgba(0, 0, 0, 0.678);
 }
 .todo__input
 {
-    padding: .7rem 2rem;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid var(--gray);
+    outline: 0;
+    font-size: 1.3rem;
+    color: var(--white);
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+    /* padding: .7rem 2rem;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     width: 90%;
     background-color: #f0eeee;
-    /* background-color: gray; */
+    
     width:40em;  
     margin-top: 10px;  
     height:40px;
     transition:all .2s;
-    border: transparent;
-    /* border-radius:20px; */
+    border: transparent; */
+   
 
 }
 .todo__input:focus{
-    outline: none;
-    background-color: white;
+    padding-bottom:6px ;
+    font-weight: 700;
+    border-width: 3px;
+    border-image: linear-gradient(to right, var(--primaryColor),var(--secondaryColor));
+    border-image-slice:1 ;
     
 }
 .todo__input-button{
@@ -66,7 +95,7 @@ body{
     margin: auto;
     padding: auto;
     width: 70em;
-    background-color: aliceblue;
+    background-color:rgba(0, 0, 0, 0.397);
     
     margin-top: 20px;
 }
@@ -75,7 +104,8 @@ body{
     padding: 5px 5px;
     display:flex;
     /* flex-direction: row; */
-    flex-direction: space-between;
+    justify-content: space-around;
+    align-items: center;
 
 }
 .checkbox
@@ -112,5 +142,11 @@ body{
 .list-item-completeButton
 {
     margin-left: 10px;
+}
+
+.icon-button{
+    width: 200px;
+   
+
 }
 
