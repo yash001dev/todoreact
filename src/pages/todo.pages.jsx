@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './todo.style.css';
 class Todo extends React.Component {
     constructor(props) {
         super(props);
@@ -8,6 +8,7 @@ class Todo extends React.Component {
             list: [],
         }
     }
+    
     handleSubmit = (event) => {
         event.preventDefault();
         console.log("button clicked");
@@ -19,7 +20,7 @@ class Todo extends React.Component {
                 id: Math.random(),
                 value: this.state.value,
                 status: false,
-                isChecked:false,
+                isChecked: false,
 
             };
             console.log("list added");
@@ -28,7 +29,7 @@ class Todo extends React.Component {
 
             this.setState({
                 list: list,
-                userInput: ""
+                value: ""
             });
             console.log("push Operation");
         }
@@ -38,7 +39,6 @@ class Todo extends React.Component {
             value: event.target.value
         })
         console.log(event.target.value);
-
     }
 
     deletedItem(key) {
@@ -66,7 +66,7 @@ class Todo extends React.Component {
         console.log(updatedList);
     }
 
-    toggleCheckBoxChange(key){
+    toggleCheckBoxChange(key) {
         console.log("Toogle Clicked...");
         const list = [...this.state.list];
         const updatedList = list.map((item, index) => {
@@ -85,25 +85,31 @@ class Todo extends React.Component {
     }
     render() {
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <input type="text" value={this.state.value} onChange={this.updateText} />
-                    <button type="submit" value="Submit">Submit</button>
-                </form>
-                <ul>
-                    {this.state.list.length === 0 ? 'No Information Currently In the List' : this.state.list.map((item, index) => {
-                        return <li>{item.value}
+            <div className="container">
+                <div className="header">
+                    <form onSubmit={this.handleSubmit} className="todo">
+                        <input className="todo__input" type="text" value={this.state.value} onChange={this.updateText} />
+                        <button className="todo__input-button" type="submit" value="Submit">Submit</button>
+                    </form>
+                </div>
+                <div className="list">
+                    <ul className="list-main">
+                        {this.state.list.length === 0 ? <div>No any Todoes</div> : this.state.list.map((item, index) => {
+                            return <li className="list-item">
+                                <input className="checkbox" type="checkbox" checked={item.isChecked} onChange={() => this.toggleCheckBoxChange(item.id)}></input>
+                                <p className={item.isChecked?'checked':'uncheck'}>{item.value}</p>
+                                <div className="icon-button">
+                                    <button className="list-item-deleteButton" disabled={item.isChecked} onClick={() => this.deletedItem(item.id)}>❌</button>
+                                    <button className="list-item-completeButton" disabled={item.isChecked} onClick={() =>
+                                        this.toogleTask(item.id)}>
+                                        {item.status ? '😌' : '🤘'}
+                                    </button>
+                                </div>
+                            </li>
                             
-                            <button disabled={item.isChecked} onClick={() => this.deletedItem(item.id)}>Delete</button>
-                            <button disabled={item.isChecked} onClick={() => 
-                                this.toogleTask(item.id)}>
-                                    {item.status ? 'Incomplete' : 'Complete'}
-                            </button>
-                            <input type="checkbox" checked={item.isChecked} onChange={()=>this.toggleCheckBoxChange(item.id)}></input>
-                        </li>
-                    })}
-
-                </ul>
+                        })}
+                    </ul>
+                </div>
             </div>
 
             // {this.state.list.map((item,index)=>{return <li>{item.value}</li>})} 

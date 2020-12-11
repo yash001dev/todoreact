@@ -1,0 +1,116 @@
+/* Base Styling */
+*,
+*::before,
+*::after{
+    box-sizing: inherit;
+    
+}
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+body{
+    font-family: 'Montserrat', Courier, monospace;
+    font-weight: 400;
+    line-height: 1.6;
+    
+}
+/* End BaseStyling */
+.container
+{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding: auto;
+    margin: auto;
+    border: 1px solid black;
+    flex-direction: column;
+    width: 100em;
+    margin-top: 30px;
+    border-radius: 5px;
+    /* background-image: linear-gradient(to right, rgb(168, 255, 120), rgb(120, 255, 214)); */
+    background-color: #e5e5e5;
+}
+.todo__input
+{
+    padding: .7rem 2rem;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    width: 90%;
+    background-color: #f0eeee;
+    /* background-color: gray; */
+    width:40em;  
+    margin-top: 10px;  
+    height:40px;
+    transition:all .2s;
+    border: transparent;
+    /* border-radius:20px; */
+
+}
+.todo__input:focus{
+    outline: none;
+    background-color: white;
+    
+}
+.todo__input-button{
+    height:40px;
+    width:80px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 10px;
+    border:transparent;
+}
+.list-main
+{
+    
+    margin: auto;
+    padding: auto;
+    width: 70em;
+    background-color: aliceblue;
+    
+    margin-top: 20px;
+}
+.list-item
+{
+    padding: 5px 5px;
+    display:flex;
+    /* flex-direction: row; */
+    flex-direction: space-between;
+
+}
+.checkbox
+{
+    top: 60px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    
+}
+.uncheck
+{
+    font-size: 20px;
+    margin:0px;
+   
+}
+.list-main div
+{
+    font-size: 20px;
+    height: auto;
+    width: auto;
+}
+    
+.checked{
+    font-size: 20px;
+    margin:0px;
+    text-decoration: line-through;
+}
+.list-item-deleteButton
+{
+    margin-left: 100px;
+}
+.list-item-completeButton
+{
+    margin-left: 10px;
+}
+
